@@ -1,0 +1,69 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GetMetadataLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"container": "input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Serial No.",
+				"type": "String"
+			},
+			{
+				"name": "GRE Score",
+				"type": "String"
+			},
+			{
+				"name": "TOEFL Score",
+				"type": "String"
+			},
+			{
+				"name": "University Rating",
+				"type": "String"
+			},
+			{
+				"name": "SOP",
+				"type": "String"
+			},
+			{
+				"name": "LOR",
+				"type": "String"
+			},
+			{
+				"name": "CGPA",
+				"type": "String"
+			},
+			{
+				"name": "Research",
+				"type": "String"
+			},
+			{
+				"name": "Chance of Admit",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

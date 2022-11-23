@@ -1,0 +1,73 @@
+{
+	"name": "empdep_dataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "EmpDataSet",
+						"type": "DatasetReference"
+					},
+					"name": "Emptestdata"
+				},
+				{
+					"dataset": {
+						"referenceName": "DepTestDataSet",
+						"type": "DatasetReference"
+					},
+					"name": "DepartmentData"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Output_emp_data",
+						"type": "DatasetReference"
+					},
+					"name": "OutputEmpData"
+				}
+			],
+			"transformations": [
+				{
+					"name": "JoinEmpDep"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          empid as string,",
+				"          name as string,",
+				"          country as string,",
+				"          department as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Emptestdata",
+				"source(output(",
+				"          depid as string,",
+				"          depname as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> DepartmentData",
+				"Emptestdata, DepartmentData join(department == depid,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> JoinEmpDep",
+				"JoinEmpDep sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['Emp_dep_data'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          empid,",
+				"          emp_name = name,",
+				"          country,",
+				"          depname",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> OutputEmpData"
+			]
+		}
+	}
+}

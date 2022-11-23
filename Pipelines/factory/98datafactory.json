@@ -1,0 +1,9 @@
+{
+	"name": "98datafactory",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c0dc0dbe-404d-4f20-becc-6eb4b79c37f6",
+		"tenantId": "e0ec21c6-86af-4ff8-9512-d5ba35c19db1"
+	}
+}

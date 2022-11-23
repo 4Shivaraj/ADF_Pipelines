@@ -1,0 +1,42 @@
+{
+	"name": "ForEachAdverstising",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OutputDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TV",
+				"type": "decimal",
+				"precision": 30,
+				"scale": 5
+			},
+			{
+				"name": "radio",
+				"type": "decimal",
+				"precision": 30,
+				"scale": 5
+			},
+			{
+				"name": "newspaper",
+				"type": "decimal",
+				"precision": 30,
+				"scale": 5
+			},
+			{
+				"name": "sales",
+				"type": "decimal",
+				"precision": 30,
+				"scale": 5
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "advertising"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

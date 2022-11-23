@@ -1,0 +1,31 @@
+{
+	"name": "TumblingWindowTrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipeline": {
+			"pipelineReference": {
+				"referenceName": "Copy Data To  Sql",
+				"type": "PipelineReference"
+			},
+			"parameters": {
+				"FileName": "cars.csv",
+				"TableName": "cars"
+			}
+		},
+		"type": "TumblingWindowTrigger",
+		"typeProperties": {
+			"frequency": "Minute",
+			"interval": 5,
+			"startTime": "2022-11-10T13:02:00Z",
+			"endTime": "2022-11-10T14:01:00Z",
+			"delay": "00:02:00",
+			"maxConcurrency": 50,
+			"retryPolicy": {
+				"count": 10,
+				"intervalInSeconds": 30
+			},
+			"dependsOn": []
+		}
+	}
+}

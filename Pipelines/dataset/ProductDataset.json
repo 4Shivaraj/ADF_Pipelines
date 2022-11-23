@@ -1,0 +1,25 @@
+{
+	"name": "ProductDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedService_Shiv_MaIn",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Product.csv",
+				"folderPath": "data",
+				"container": "i-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

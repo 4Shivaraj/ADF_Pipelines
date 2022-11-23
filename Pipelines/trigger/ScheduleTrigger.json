@@ -1,0 +1,29 @@
+{
+	"name": "ScheduleTrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Copy Data To  Sql",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"FileName": "planes.csv",
+					"TableName": "planes"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2022-11-10T12:50:00",
+				"endTime": "2022-11-11T00:12:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
